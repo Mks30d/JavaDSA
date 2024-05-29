@@ -1,0 +1,17 @@
+1. BuySellStocks -> buySellStocks1() : buyIndex is not working for prices1[] = { 7, 3, 1, 5, 6, 0, 4 };
+
+2. 287. Find the Duplicate Number : try to understand kunal solution(cyclic sort)
+
+;
+
+
+--------------------
+=> int a =10 (a=varible, 10= object)
+varibles in stack memory pointing towards the object in heap memory
+
+
+=> garbage collection -> obj that do not have a ref var pointing towards them will removed
+
+
+
+
