@@ -95,8 +95,7 @@ public class FirstAndLastPosition {
                 last = i;
             }
         }
-        int[] ans = { first, last };
-        return ans;
+        return new int[]{ first, last };
     }
 
     public static void main(String[] args) {
