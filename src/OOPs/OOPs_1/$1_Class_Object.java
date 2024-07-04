@@ -30,5 +30,13 @@ public class $1_Class_Object {
         System.out.println(rohan.marks); //0.0
         System.out.println(rohan.default_value); // 88
 
+        // when two reference variable referring to same object,
+        // then changes made through one object reflected in second object as both are referring to the same object
+        Student one = new Student();
+        Student two = one;
+        System.out.println(one.roll);
+        one.roll = 99;
+        System.out.println(two.roll);
+        System.out.println(one.roll);
     }
 }
