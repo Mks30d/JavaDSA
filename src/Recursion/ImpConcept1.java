@@ -1,4 +1,6 @@
-public class ImpConcept {
+package Recursion;
+
+public class ImpConcept1 {
 
 //    (n--) vs (--n)
     public static void impConcept(int n) {
