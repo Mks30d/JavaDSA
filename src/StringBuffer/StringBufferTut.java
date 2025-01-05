@@ -9,12 +9,12 @@ public class StringBufferTut {
         //Constructor 1
         StringBuffer sb = new StringBuffer();
         System.out.println(sb.capacity()); //16
+
         //Constructor 2
         StringBuilder sb2 = new StringBuilder("12345");
         System.out.println(sb2.capacity());  // 16+5
         sb2.trimToSize(); //reduce the capacity to match the current length
         System.out.println(sb.capacity());  // Output: Matches the current length
-
 
         //Constructor 3
         StringBuffer sb3 = new StringBuffer(30);

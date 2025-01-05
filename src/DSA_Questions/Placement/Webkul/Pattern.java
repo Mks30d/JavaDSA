@@ -1,14 +1,33 @@
 package DSA_Questions.Placement.Webkul;
 
 //n=3;
-//--->ee
-//---> *       *
-//---> *   *   *
-//---> *eee*eee*
-//---> *   *   *
-//---> *       *
-//--->         ee
+//ee
+// *       *
+// *   *   *
+// *eee*eee*
+// *   *   *
+// *       *
+//         ee
 
+//Ex.1 for n=3
+//ee
+// *       *
+// *   *   *
+// *eee*eee*
+// *   *   *
+// *       *
+//         ee
+
+//Ex.2 for n=5
+//eeee
+//   *           *
+//   *     *     *
+//   *     *     *
+//   *eeeee*eeeee*
+//   *     *     *
+//   *     *     *
+//   *           *
+//               eeee
 
 public class Pattern {
 //-------------------Method 1----------------------
@@ -109,7 +128,7 @@ public class Pattern {
 
         // Bottom 'e' line
         printRepeatedChar(' ', 3 * n);
-        printRepeatedChar('e', n);
+        printRepeatedChar('e', n-1);
         System.out.println();
     }
 
@@ -123,10 +142,10 @@ public class Pattern {
     public static void main(String[] args) {
 
         System.out.println("Ex.1 for n=3");
-        pattern1(3);
+        pattern(3);
         System.out.println("\n");
         System.out.println("Ex.2 for n=5");
-        pattern1(5);
+        pattern(5);
     }
 
 }
