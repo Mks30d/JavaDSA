@@ -65,7 +65,7 @@ public class BinaryTree_CRUD {
 
 
     // -------- Binary Tree Level Order Traversal (BFS) --------
-    // -------- method-1 (Using loop and recursion) --------
+    // -------- method-1 (Using loop and recursion), TC-O(n*n) --------
     public static void printCurrentLevel(Node root, int level) {
         if (root == null)
             return;
@@ -78,13 +78,21 @@ public class BinaryTree_CRUD {
         }
     }
 
-    // -------- method-2 (using queue) --------
+    // -------- method-2 (using queue), TC-O(n), SC-O(n) --------
     static Queue<Node> queue = new LinkedList<>();
 
     public static void BFS_Queue(Node root) {
         queue.add(root);
+//        queue.add(null);  // to print every level in new line
         while (!queue.isEmpty()) {
             Node curr = queue.poll();
+//            if (curr==null) {
+//                if (queue.isEmpty())
+//                    return;
+//                queue.add(null);
+//                System.out.println();
+//                continue;
+//            }
             System.out.print(curr.data + ", ");
             if (curr.left != null) {
                 queue.add(curr.left);
