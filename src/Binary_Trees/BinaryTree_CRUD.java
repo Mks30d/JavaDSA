@@ -1,5 +1,7 @@
 package Binary_Trees;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class BinaryTree_CRUD {
@@ -20,7 +22,8 @@ public class BinaryTree_CRUD {
         System.out.print("Enter data: ");
         int data = sc.nextInt();
         System.out.println();
-        if (data == -1) return null;
+        if (data == -1)
+            return null;
         Node root = new Node(data);
 
         System.out.println("Enter left for: " + data);
@@ -32,9 +35,10 @@ public class BinaryTree_CRUD {
         return root;
     }
 
-    // 2. -------- Binary Tree Traversals --------
+    // 2. -------- Binary Tree Traversals (DFS) --------
     public static void inOrder(Node root) {
-        if (root == null) return;
+        if (root == null)
+            return;
 
         inOrder(root.left);
         System.out.print(root.data + ", ");
@@ -42,7 +46,8 @@ public class BinaryTree_CRUD {
     }
 
     public static void preOrder(Node root) {
-        if (root == null) return;
+        if (root == null)
+            return;
 
         System.out.print(root.data + ", ");
         preOrder(root.left);
@@ -50,18 +55,69 @@ public class BinaryTree_CRUD {
     }
 
     public static void postOrder(Node root) {
-        if (root == null) return;
+        if (root == null)
+            return;
 
         postOrder(root.left);
         postOrder(root.right);
         System.out.print(root.data + ", ");
     }
 
+
+    // -------- Binary Tree Level Order Traversal (BFS) --------
+    // -------- method-1 (Using loop and recursion) --------
+    public static void printCurrentLevel(Node root, int level) {
+        if (root == null)
+            return;
+        if (level == 1)
+            System.out.print(root.data + " ");
+
+        if (level > 1) {
+            printCurrentLevel(root.left, level - 1);
+            printCurrentLevel(root.right, level - 1);
+        }
+    }
+
+    // -------- method-2 (using queue) --------
+    static Queue<Node> queue = new LinkedList<>();
+
+    public static void BFS_Queue(Node root) {
+        queue.add(root);
+        while (!queue.isEmpty()) {
+            Node curr = queue.poll();
+            System.out.print(curr.data + ", ");
+            if (curr.left != null) {
+                queue.add(curr.left);
+            }
+            if (curr.right != null) {
+                queue.add(curr.right);
+            }
+        }
+    }
+
+
     // -------- Binary Tree Height --------
     public static int heightBT(Node root) {
-        if (root == null) return 0;
+        if (root == null)
+            return 0;
 
         return Math.max(heightBT(root.left), heightBT(root.right)) + 1;
+    }
+
+    // -------- Binary Tree Size (no. of nodes) --------
+    public static int sizeBT(Node root) {
+        if (root == null)
+            return 0;
+
+        return (sizeBT(root.left) + sizeBT(root.right) + 1);
+    }
+
+    // -------- Binary Tree Maximum Node.data --------
+    public static int maxNodeData(Node root) {
+        if (root == null)
+            return Integer.MIN_VALUE;
+
+        return Math.max(root.data, Math.max(maxNodeData(root.left), maxNodeData(root.right)));
     }
 
     // -------- main function --------
@@ -69,7 +125,10 @@ public class BinaryTree_CRUD {
 
         Node root = createTree();
 
+        System.out.println("------------------------");
         System.out.println("Binary Tree height: " + heightBT(root));
+        System.out.println("Binary Tree size: " + sizeBT(root));
+        System.out.println("Binary Tree maxNodeData: " + maxNodeData(root));
 
         System.out.println("\nInOrder Traversal: ");
         inOrder(root);
@@ -77,6 +136,16 @@ public class BinaryTree_CRUD {
         preOrder(root);
         System.out.println("\nPostOrder Traversal: ");
         postOrder(root);
+
+        // calling printCurrentLevel() for every level to print nodes
+        System.out.println("\nLevelOrder Traversal: ");
+        for (int i = 1; i <= heightBT(root); i++) {
+            printCurrentLevel(root, i);
+            System.out.println();
+        }
+
+        System.out.println("BFS Queue: ");
+        BFS_Queue(root);
     }
 }
 
